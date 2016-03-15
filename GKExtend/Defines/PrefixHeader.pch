@@ -1,0 +1,58 @@
+
+
+#import "GKConst.h"
+#import "GKHttpEngine.h"
+#import "GKNetworking.h"
+
+/**
+ 适配定义
+ */
+#define Scales    ([UIScreen mainScreen].bounds.size.height)/480.0f
+#define iPhone4    ([UIScreen mainScreen].bounds.size.height==480.0f)
+#define iPhone5S    ([UIScreen mainScreen].bounds.size.height==568.0f)
+#define iPhone6    ([UIScreen mainScreen].bounds.size.height==667.0f)
+#define iPhone6P    ([UIScreen mainScreen].bounds.size.height==736.0f)
+#define iPadMini    ([UIScreen mainScreen].bounds.size.height==512.0f)
+#define iPad    ([UIScreen mainScreen].bounds.size.height==1024.0f)
+
+/* 屏幕Rect */
+//#define Viewfram []
+#define kScreenR [UIScreen mainScreen].bounds
+#define kScreenW [UIScreen mainScreen].bounds.size.width
+#define kScreenH [UIScreen mainScreen].bounds.size.height
+
+//上线接口和用户头像前缀
+#if APP_CHANNEL_TYPE == 0
+//测试环境
+#define kBASEURL  @""
+#define kUserIconBaseURL @""
+#define kCURRENTURL(resourceURL) [kBASEURL stringByAppendingString:resourceURL]
+// 正式环境
+#elif APP_CHANNEL_TYPE == 1
+#define kBASEURL  @""
+#define kUserIconBaseURL @""
+#define kCURRENTURL(resourceURL) [kBASEURL stringByAppendingString:resourceURL]
+
+#else
+
+#endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
