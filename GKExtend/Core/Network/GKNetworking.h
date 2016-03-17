@@ -13,7 +13,6 @@
 + (void)getWithURLString:(NSString *)URLString getParam:(NSDictionary *)getParam finish:(void (^)(id responseObject, NSError *error))postBack;
 
 /**
- *  @author HC, 15-08-27 09:08:28
  *
  *  post请求
  *

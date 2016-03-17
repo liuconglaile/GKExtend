@@ -36,10 +36,30 @@
     NSDictionary *paramters = @{@"userName":@"zhaoxiaoming",
                                 @"password":@"000000"
                                 };
-    [GKHttpEngine post:kCURRENTURL(TestUrl) param:paramters finish:^(NSData *data, NSDictionary *obj, NSError *error) {
-        NSLog(@"%@", data);
+    [GKHttpEngine isNetWorkingResponse:^{
+        [GKHttpEngine post:kCURRENTURL(TestUrl) param:paramters finish:^(NSData *data, NSDictionary *obj, NSError *error) {
+            NSLog(@"%@", data);
+            //存入本地
+            GKCacheManager *cm = [GKCacheManager defaultManager];
+            [cm insertCacheWithURL:kCURRENTURL(TestUrl) data:data];
+        }];
+    } orNotResponse:^{
+        [self dataFromLocal];
     }];
 
+
+}
+
+- (void)dataFromLocal {
+    //判断该url对应的数据是否存在缓存
+    // 第一次创建该单例时会创建table
+    GKCacheManager * cm = [GKCacheManager defaultManager];
+    //数据存在时间 
+    cm.validTime = 3600 * 24;
+    NSData *data = [cm dataFromCachesWithURL:kCURRENTURL(TestUrl)];
+    if (data) {
+            NSLog(@"%@",data);
+    }
 }
 
 - (void)didReceiveMemoryWarning {

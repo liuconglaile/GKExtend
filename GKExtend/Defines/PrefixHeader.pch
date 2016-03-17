@@ -4,6 +4,7 @@
 #import "GKHttpEngine.h"
 #import "GKNetworking.h"
 #import "Masonry.h"
+#import "GKCacheManager.h"
 
 /**
  适配定义
@@ -21,6 +22,12 @@
 #define kScreenR [UIScreen mainScreen].bounds
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 #define kScreenH [UIScreen mainScreen].bounds.size.height
+
+//定制颜色
+#define kCustomColor(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+
+// 弱引用
+#define kWeakSelf __weak typeof(self) weakSelf = self;
 
 //上线接口和用户头像前缀
 //测试环境
