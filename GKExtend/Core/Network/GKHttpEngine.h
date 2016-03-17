@@ -17,12 +17,14 @@
 // 返回值是 void, 参数是NSData *data, NSError *error
 // void (^) (NSData *data, NSError *error)
 // cb callback回调
-+ (void) get:(NSString *)urlpath param:(NSDictionary *)dict finish:(  void (^)(NSData *data, NSDictionary *obj, NSError *error)      )cb;
-+ (void) postWithNSString:(NSString *)urlpath param:(NSDictionary *)strParam finish:(  void (^)(NSData *data, NSDictionary *obj, NSError *error)      )cb;
-+ (void) postWithDictionary:(NSString *)urlpath param:(NSDictionary *)dictParam finish:(  void (^)(NSData *data, NSDictionary *obj, NSError *error)      )cb;
+//普通GET请求
++ (void) get:(NSString *)urlpath param:(NSDictionary *)params finish:(void (^)(NSData *data, NSDictionary *obj, NSError *error))cb;
+//普通POST请求
++(void)post:(NSString *)urlpath param:(NSDictionary *)params finish:(void (^)(NSData *data, NSDictionary *obj, NSError *error))cb;
+//同步请求
 + (void) postWithURLString:(NSString * )URLString body:(NSDictionary *)body header:(NSDictionary *)header finish:(  void (^)(NSData *data, NSDictionary *obj, NSError *error))cb;
 + (void) postLoginWithURLString:(NSString * )URLString body:(NSDictionary *)body header:(NSDictionary *)header finish:(  void (^)(NSData *data, NSDictionary *obj, NSError *error))cb;
-+ (void)postWithHeader:(NSString *)urlPath param:(NSString *)strParam header:(NSString *)strHeader finish:(void (^)(NSData *data, NSDictionary *obj, NSError *error))cb;
+
 
 
 @end

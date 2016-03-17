@@ -8,6 +8,7 @@
 
 #import "GKHttpEngine.h"
 #import "AFNetworking.h"
+#import "SVProgressHUD.h"
 
 @interface GKHttpEngine ()
 
@@ -59,83 +60,46 @@
     return [AFNetworkReachabilityManager sharedManager].isReachable;
 }
 
+#pragma mark --- 普通GET请求
 
-+ (void) get:(NSString *)urlpath param:(NSDictionary *)dict finish:(  void (^)(NSData *data, NSDictionary *obj, NSError *error)      )cb {
++ (void) get:(NSString *)urlpath param:(NSDictionary *)params finish:(void (^)(NSData *data, NSDictionary *obj, NSError *error))cb {
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+   
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [SVProgressHUD show];
     
-    manager.responseSerializer = [[AFHTTPResponseSerializer alloc] init];
-    
-    
-    [manager GET:urlpath parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:urlpath parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressHUD dismiss];
         NSDictionary *obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         if (cb) cb(responseObject, obj, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error : %@",[error localizedDescription]);
+        [SVProgressHUD showErrorWithStatus:[error localizedDescription]];
         if (cb) cb(nil, nil, error);
     }];
     
 }
 
-+ (void)postWithHeader:(NSString *)urlPath param:(NSString *)strParam header:(NSString *)strHeader finish:(void (^)(NSData *data, NSDictionary *obj, NSError *error))cb {
-    
-    NSURL * URL = [NSURL URLWithString:[urlPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    
-    NSData * postData = [strParam dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSMutableURLRequest * request = [[NSMutableURLRequest alloc]init];
-    [request setHTTPMethod:@"post"]; //指定请求方式
-    [request setURL:URL]; //设置请求的地址
-    [request setHTTPBody:postData];  //设置请求的参数
-    
-    [request setValue:strHeader forHTTPHeaderField:@"Authorization"];
-    
-    NSURLResponse * response;
-    NSError * error;
-    NSData * backData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    
-    if (error) {
-        if (cb) cb(nil,nil,error);
-    }else{
-        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:backData options:NSJSONReadingMutableLeaves error:nil];
-        if (cb) cb(backData,dict,nil);
-    }
-}
-
-+ (void) postWithNSString:(NSString *)urlpath param:(NSDictionary *)strParam finish:(  void (^)(NSData *data, NSDictionary *obj, NSError *error)      )cb {
-    
+#pragma mark --- 普通POST请求
++(void)post:(NSString *)urlpath param:(NSDictionary *)params finish:(void (^)(NSData *data, NSDictionary *obj, NSError *error))cb {
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:strParam options:NSJSONWritingPrettyPrinted error:nil];
-    
-    NSString * str = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
-    [manager POST:urlpath parameters:str success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (cb) cb(responseObject, nil, nil);
-        
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    [SVProgressHUD show];
+    [manager POST:urlpath parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        [SVProgressHUD dismiss];
+                NSDictionary *obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        if (cb) cb(responseObject, obj, nil);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        NSLog(@"error : %@",[error localizedDescription]);
+        [SVProgressHUD showErrorWithStatus:[error localizedDescription]];
         if (cb) cb(nil, nil, error);
     }];
     
 }
 
-
-+ (void) postWithDictionary:(NSString *)urlpath param:(NSDictionary *)dictParam finish:(  void (^)(NSData *data, NSDictionary *obj, NSError *error)      )cb {
-    
-    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
-    
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    [manager POST:urlpath parameters:dictParam success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (cb) cb(responseObject, responseObject, nil);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (cb) cb(nil, nil, error);
-    }];
-    
-}
-
+#pragma mark --- 同步请求
 //注册请求
 + (void) postWithURLString:(NSString * )URLString body:(NSDictionary *)body header:(NSDictionary *)header finish:(  void (^)(NSData *data, NSDictionary *obj, NSError *error))cb {
     
@@ -246,6 +210,7 @@
         if (cb) cb(backData, nil, nil);
     }
 }
+
 
 
 @end

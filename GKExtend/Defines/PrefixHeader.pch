@@ -3,6 +3,7 @@
 #import "GKConst.h"
 #import "GKHttpEngine.h"
 #import "GKNetworking.h"
+#import "Masonry.h"
 
 /**
  适配定义
@@ -22,14 +23,14 @@
 #define kScreenH [UIScreen mainScreen].bounds.size.height
 
 //上线接口和用户头像前缀
-#if APP_CHANNEL_TYPE == 0
 //测试环境
-#define kBASEURL  @""
+#if APP_CHANNEL_TYPE == 0
+#define kBASEURL  @"http://183.129.206.142:8089/"
 #define kUserIconBaseURL @""
 #define kCURRENTURL(resourceURL) [kBASEURL stringByAppendingString:resourceURL]
 // 正式环境
 #elif APP_CHANNEL_TYPE == 1
-#define kBASEURL  @""
+#define kBASEURL  @"http://183.129.206.142:8089/"
 #define kUserIconBaseURL @""
 #define kCURRENTURL(resourceURL) [kBASEURL stringByAppendingString:resourceURL]
 

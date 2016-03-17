@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "GKBaseViewController.h"
+#import "DemoViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,8 +17,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //检测网络状况
     [GKHttpEngine isNetWorkingResponse:nil orNotResponse:nil];
-    GKBaseViewController *rootView = [[GKBaseViewController alloc] init];
+    DemoViewController *rootView = [[DemoViewController alloc] init];
     _window = [[UIWindow alloc] initWithFrame:kScreenR];
     _window.rootViewController = rootView;
     self.window.backgroundColor = [UIColor whiteColor];

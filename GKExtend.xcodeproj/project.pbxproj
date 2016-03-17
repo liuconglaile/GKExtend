@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		10AA559EF2B7AB59D2FC22C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11207CDE17A6A4A68F88741C /* libPods.a */; };
+		462DC5831C9A61EC00C2A930 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462DC5811C9A61EC00C2A930 /* DemoViewController.m */; };
+		462DC5841C9A61EC00C2A930 /* DemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 462DC5821C9A61EC00C2A930 /* DemoViewController.xib */; };
 		46E8E0DA1C832271001085A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E8E0D91C832271001085A1 /* main.m */; };
 		46E8E0DD1C832271001085A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E8E0DC1C832271001085A1 /* AppDelegate.m */; };
 		46E8E0E51C832271001085A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46E8E0E41C832271001085A1 /* Assets.xcassets */; };
@@ -64,6 +66,9 @@
 /* Begin PBXFileReference section */
 		11207CDE17A6A4A68F88741C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B735B6A7971ABADFE2C6AEF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		462DC5801C9A61EC00C2A930 /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		462DC5811C9A61EC00C2A930 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
+		462DC5821C9A61EC00C2A930 /* DemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoViewController.xib; sourceTree = "<group>"; };
 		46E8E0D51C832271001085A1 /* GKExtend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GKExtend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46E8E0D91C832271001085A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		46E8E0DB1C832271001085A1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -120,7 +125,6 @@
 		46E8E13B1C8324BC001085A1 /* GKRefreshBackFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKRefreshBackFooter.m; sourceTree = "<group>"; };
 		46E8E13C1C8324BC001085A1 /* GKRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKRefreshHeaderView.h; sourceTree = "<group>"; };
 		46E8E13D1C8324BC001085A1 /* GKRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKRefreshHeaderView.m; sourceTree = "<group>"; };
-		46E8E13F1C8324BC001085A1 /* HZExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZExtend.h; sourceTree = "<group>"; };
 		46E8E1401C8324BC001085A1 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		46E8E1491C8324BC001085A1 /* GKBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBaseNavigationController.h; sourceTree = "<group>"; };
 		46E8E14A1C8324BC001085A1 /* GKBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBaseNavigationController.m; sourceTree = "<group>"; };
@@ -341,7 +345,6 @@
 		46E8E13E1C8324BC001085A1 /* Defines */ = {
 			isa = PBXGroup;
 			children = (
-				46E8E13F1C8324BC001085A1 /* HZExtend.h */,
 				46E8E1401C8324BC001085A1 /* PrefixHeader.pch */,
 			);
 			path = Defines;
@@ -397,6 +400,9 @@
 			isa = PBXGroup;
 			children = (
 				46E8E1481C8324BC001085A1 /* Base */,
+				462DC5801C9A61EC00C2A930 /* DemoViewController.h */,
+				462DC5811C9A61EC00C2A930 /* DemoViewController.m */,
+				462DC5821C9A61EC00C2A930 /* DemoViewController.xib */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -553,6 +559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46E8E0E81C832271001085A1 /* LaunchScreen.storyboard in Resources */,
+				462DC5841C9A61EC00C2A930 /* DemoViewController.xib in Resources */,
 				46E8E0E51C832271001085A1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,6 +642,7 @@
 				46E8E1651C8324BC001085A1 /* UIImageView+GKExtend.m in Sources */,
 				46E8E1731C8324BC001085A1 /* NSDate+Utility.m in Sources */,
 				46E8E1691C8324BC001085A1 /* GKCircleView.m in Sources */,
+				462DC5831C9A61EC00C2A930 /* DemoViewController.m in Sources */,
 				46E8E1711C8324BC001085A1 /* GKUUID.m in Sources */,
 				46E8E1621C8324BC001085A1 /* GKHttpEngine.m in Sources */,
 				46E8E16C1C8324BC001085A1 /* GKRefreshHeaderView.m in Sources */,
@@ -789,6 +797,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GKExtend/Defines/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"APP_CHANNEL_TYPE=0",
+				);
 				INFOPLIST_FILE = GKExtend/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alexs.GKExtend;
@@ -803,6 +816,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GKExtend/Defines/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"APP_CHANNEL_TYPE=0",
+				);
 				INFOPLIST_FILE = GKExtend/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alexs.GKExtend;
