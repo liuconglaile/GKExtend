@@ -32,7 +32,7 @@
 //上线接口和用户头像前缀
 //测试环境
 #if APP_CHANNEL_TYPE == 0
-#define kBASEURL  @"http://183.129.206.142:8089/"
+#define kBASEURL  @"http://183.129.206.141/"
 #define kUserIconBaseURL @""
 #define kCURRENTURL(resourceURL) [kBASEURL stringByAppendingString:resourceURL]
 // 正式环境

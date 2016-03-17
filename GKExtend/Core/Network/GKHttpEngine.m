@@ -71,8 +71,8 @@
     
     [manager GET:urlpath parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
-        NSDictionary *obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        if (cb) cb(responseObject, obj, nil);
+        NSData *backData = [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
+        if (cb) cb(backData, responseObject, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error : %@",[error localizedDescription]);
         [SVProgressHUD showErrorWithStatus:[error localizedDescription]];
@@ -89,8 +89,8 @@
     [SVProgressHUD show];
     [manager POST:urlpath parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         [SVProgressHUD dismiss];
-                NSDictionary *obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        if (cb) cb(responseObject, obj, nil);
+        NSData *backData = [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
+        if (cb) cb(backData, responseObject, nil);
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         NSLog(@"error : %@",[error localizedDescription]);
         [SVProgressHUD showErrorWithStatus:[error localizedDescription]];
